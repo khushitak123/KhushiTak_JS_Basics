@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Marksheet</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #283675;
+    text-align: center;
+}
+
+h1 {
+    color: #F2F6FA;
+}
+
+.form-container {
+    background-color: #39699E;
+    width: 550px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 5px 4px 10px black;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 6px;
+    border-radius:10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #809EBD;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius:5px;
+}
+
+button:hover {
+    background-color: #2F5987;
+}
+
+.marksheet {
+    width: 400px;
+    margin: 30px auto;
+    background-color: #D4EAFF;
+    border: 2px solid black;
+    padding: 25px;
+    display: none;
+    text-align:left;
+    border-radius:12px;
+}
+
+.marksheet h2 {
+    text-align: center;
+    border-bottom: 7px solid black;
+    padding-bottom: 5px;
+}
+
+table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid white;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    background-color: #ABC6FF;
+}
+
+.result {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Marksheet</h1>
+
+<div class="form-container">
+    <input type="text" id="name" placeholder="Student Name"><br>
+    <input type="text" id="roll" placeholder="Roll Number"><br>
+
+    <input type="number" id="m1" placeholder="Enter Marks:-"><br>
+    <input type="number" id="m2" placeholder="Enter Marks:-"><br>
+    <input type="number" id="m3" placeholder="Enter Marks:-"><br>
+    <input type="number" id="m4" placeholder="Enter Marks:-"><br>
+    <input type="number" id="m5" placeholder="Enter Marks:-"><br>
+
+    <button onclick="generateMarksheet()">Submit</button>
+</div>
+
+<div class="marksheet" id="marksheet">
+   <h2>Marksheet</h2>
+
+    <p><strong>Name-</strong> <span id="sname"></span></p>
+    <p><strong>Roll No-</strong> <span id="sroll"></span></p>
+
+    <table id="marksTable">
+        <tr>
+            <th>Subject</th>
+            <th>Marks</th>
+        </tr>
+    </table>
+
+    <p class="result">Total:- <span id="total"></span></p>
+    <p class="result">Percentage:- <span id="percentage"></span>%</p>
+    <p class="result">Grade:- <span id="grade"></span></p>
+</div>
+
+<script>
+
+// ===== SUBJECTS (Timetable as 2D Array) =====
+let timetable = [
+    ["Maths", 0],
+    ["Science", 0],
+    ["Biology", 0],
+    ["Information Technology", 0],
+    ["Sanskrit", 0]
+];
+
+function generateMarksheet() {
+
+    let name = document.getElementById("name").value;
+    let roll = document.getElementById("roll").value;
+
+    let marksInputs = [
+        document.getElementById("m1").value,
+        document.getElementById("m2").value,
+        document.getElementById("m3").value,
+        document.getElementById("m4").value,
+        document.getElementById("m5").value
+    ];
+
+    let total = 0;
+
+    // ===== STORE MARKS IN 2D ARRAY =====
+    for (let i = 0; i < timetable.length; i++) {
+        timetable[i][1] = parseFloat(marksInputs[i]);
+        total += timetable[i][1];
+    }
+
+    let percentage = total / timetable.length;
+
+    let grade = "";
+
+    if (percentage >= 90) grade = "A+";
+    else if (percentage >= 80) grade = "A";
+    else if (percentage >= 70) grade = "B";
+    else if (percentage >= 60) grade = "C";
+    else if (percentage >= 50) grade = "D";
+    else grade = "Fail";
+
+    // ===== DISPLAY DATA =====
+    document.getElementById("sname").innerText = name;
+    document.getElementById("sroll").innerText = roll;
+
+    let table = document.getElementById("marksTable");
+    
+    // reset table (keep header)
+    table.innerHTML = `
+        <tr>
+            <th>Subject</th>
+            <th>Marks</th>
+        </tr>
+    `;
+
+    // ===== LOOP DISPLAY =====
+    for (let i = 0; i < timetable.length; i++) {
+        table.innerHTML += `
+            <tr>
+                <td>${timetable[i][0]}</td>
+                <td>${timetable[i][1]}</td>
+            </tr>
+        `;
+    }
+
+    document.getElementById("total").innerText = total;
+    document.getElementById("percentage").innerText = percentage.toFixed(2);
+    document.getElementById("grade").innerText = grade;
+
+    document.getElementById("marksheet").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
