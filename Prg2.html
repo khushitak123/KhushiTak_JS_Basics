@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bill Calculator</title>
+
+    <style>
+        /* ===== PAGE STYLE ===== */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(to right, #6FF2C1, #90E8B8,#55ED6C);
+            text-align: center;
+        }
+
+        .container {
+            background-image: linear-gradient(to right,#5AB8D1,#BBFF5C,#7EF2AF);
+            width: 540px;
+            height: 180px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 7px 5px 10px black;
+          
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius:9px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #21D96A;
+            color: white;
+            border-radius:8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #15D1BF;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            color:#464F33;
+        }
+    </style>
+</head>
+
+<body>
+
+<u><strong><h1>Bill Calculator</h1></strong></u>
+
+<div class="container">
+    <input type="number" id="items" placeholder="Enter number of items"><br>
+    <button onclick="calculateBill()">Calculate Bill</button>
+
+    <div class="result" id="output"></div>
+</div>
+
+<script>
+    // ===== FUNCTION TO CALCULATE BILL =====
+    function calculateBill() {
+
+        // Get number of items
+        let n = parseInt(document.getElementById("items").value);
+
+        let total = 0;
+
+        // ===== LOOP TO TAKE ITEM PRICES =====
+        for (let i = 1; i <= n; i++) {
+
+            // Prompt user to enter price for each item
+            let price = parseFloat(prompt("Enter price of item " + i + ":"));
+
+            // Add to total
+            total += price;
+        }
+
+        let discount = 0;
+        let finalAmount = total;
+
+        // ===== APPLY DISCOUNT =====
+        if (total > 5000) {
+            discount = total * 0.10;   // 10% discount
+            finalAmount = total - discount;
+        }
+
+        // ===== DISPLAY RESULT =====
+        document.getElementById("output").innerHTML =
+            "Total Bill:- ₹" + total.toFixed(2) + "<br>" +
+            "Discount:- ₹" + discount.toFixed(2) + "<br>" +
+            "Final Amount:- ₹" + finalAmount.toFixed(2);
+    }
+</script>
+
+</body>
+</html>
