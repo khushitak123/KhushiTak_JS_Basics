@@ -9,6 +9,7 @@ using GitHub Pages.
 ## Technologies Used
 - HTML
 - JavaScript
+- Style.css
 - GitHub
 - GitHub Pages
 
