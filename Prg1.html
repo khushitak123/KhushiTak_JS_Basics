@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Marksheet</title>
+
+    <style>
+        /* ====== PAGE STYLE ====== */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #283675;
+            text-align: center;
+        }
+
+        h1 {
+            color: #F2F6FA;
+            
+        }
+
+        /* ====== FORM STYLE ====== */
+        .form-container {
+            background-color: #39699E;
+            width: 550px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 5px 4px 10px black;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 6px;
+            border-radius:10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #809EBD;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius:5px;
+        }
+
+        button:hover {
+            background-color: #2F5987;
+        }
+
+        /* ====== MARKSHEET STYLE ====== */
+        .marksheet {
+            width: 400px;
+            margin: 30px auto;
+            background-color: #D4EAFF;
+            border: 2px solid black;
+            padding: 25px;
+            display: none;
+            text-align:left;
+            border-radius:12px;
+        }
+
+        .marksheet h2 {
+            text-align: center;
+            border-bottom: 7px solid black;
+            padding-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+            
+        }
+
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+            border-radius:10px;
+            
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+            background-color: #ABC6FF;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+
+<strong><h1>Marksheet</h1></strong>
+
+<!-- ====== INPUT FORM ====== -->
+<div class="form-container">
+    <input type="text" id="name" placeholder="Student Name"><br>
+    <input type="text" id="roll" placeholder="Roll Number"><br>
+
+    <input type="number" id="m1" placeholder="Enter Marks:-"><br>
+    <input type="number" id="m2" placeholder="Enter Marks:-"><br>
+    <input type="number" id="m3" placeholder="Enter Marks:-"><br>
+    <input type="number" id="m4" placeholder="Enter Marks:-"><br>
+    <input type="number" id="m5" placeholder="Enter Marks:-"><br>
+
+    <button onclick="generateMarksheet()">Submit</button>
+</div>
+
+<!-- ====== MARKSHEET DISPLAY ====== -->
+<div class="marksheet" id="marksheet">
+   <u><strong><h2>Marksheet</h2></strong></u>
+
+    <p><strong>Name-</strong> <span id="sname"></span></p>
+    <p><strong>Roll No-</strong> <span id="sroll"></span></p>
+
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>Marks</th>
+        </tr>
+        <tr><td>Maths</td><td id="sub1"></td></tr>
+        <tr><td>Science</td><td id="sub2"></td></tr>
+        <tr><td>Biology</td><td id="sub3"></td></tr>
+        <tr><td>Information Technology </td><td id="sub4"></td></tr>
+        <tr><td>Sanskrit</td><td id="sub5"></td></tr>
+    </table>
+
+    <p class="result">Total:- <span id="total"></span></p>
+    <p class="result">Percentage:- <span id="percentage"></span>%</p>
+    <p class="result">Grade:- <span id="grade"></span></p>
+</div>
+
+<script>
+    // ====== FUNCTION TO GENERATE MARKSHEET ======
+    function generateMarksheet() {
+
+        // Get input values
+        let name = document.getElementById("name").value;
+        let roll = document.getElementById("roll").value;
+
+        let m1 = parseFloat(document.getElementById("m1").value);
+        let m2 = parseFloat(document.getElementById("m2").value);
+        let m3 = parseFloat(document.getElementById("m3").value);
+        let m4 = parseFloat(document.getElementById("m4").value);
+        let m5 = parseFloat(document.getElementById("m5").value);
+
+        // Calculate total and percentage
+        let total = m1 + m2 + m3 + m4 + m5;
+        let percentage = total / 5;
+
+        let grade = "";
+
+        // ====== GRADE LOGIC ======
+        if (percentage >= 90) {
+            grade = "A+";
+        } else if (percentage >= 80) {
+            grade = "A";
+        } else if (percentage >= 70) {
+            grade = "B";
+        } else if (percentage >= 60) {
+            grade = "C";
+        } else if (percentage >= 50) {
+            grade = "D";
+        } else {
+            grade = "Fail";
+        }
+
+        // Display values in marksheet
+        document.getElementById("sname").innerText = name;
+        document.getElementById("sroll").innerText = roll;
+
+        document.getElementById("sub1").innerText = m1;
+        document.getElementById("sub2").innerText = m2;
+        document.getElementById("sub3").innerText = m3;
+        document.getElementById("sub4").innerText = m4;
+        document.getElementById("sub5").innerText = m5;
+
+        document.getElementById("total").innerText = total;
+        document.getElementById("percentage").innerText = percentage.toFixed(2);
+        document.getElementById("grade").innerText = grade;
+
+        // Show marksheet
+        document.getElementById("marksheet").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
