@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bill Generator</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #6FF2C1, #90E8B8,#55ED6C);
+    text-align: center;
+}
+
+.container {
+    width: 700px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 20px;
+    background: linear-gradient(to right,#5AB8D1,#BBFF5C,#7EF2AF);
+    box-shadow: 5px 5px 10px black;
+}
+
+input {
+    padding: 9px;
+    margin: 6px;
+    border-radius: 8px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #21D96A;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #15D1BF;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    }
+
+th, td {
+    border: 1px solid black;
+    border-radius:6px;
+    background-color:#79F7F7;
+}
+
+.result {
+    margin-top: 13px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1><u>Bill Calculator</u></h1>
+
+<div class="container">
+
+    <input type="text" id="itemName" placeholder="Item Name">
+    <input type="number" id="price" placeholder="Price">
+    <input type="number" id="qty" placeholder="Quantity">
+
+    <br>
+
+    <button onclick="addItem()">Add Item</button>
+    <button onclick="generateBill()">Total Bill</button>
+    <button onclick="clearAll()">Clear All</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="billTable"></tbody>
+    </table>
+
+    <div class="result" id="output"></div>
+
+</div>
+
+<script>
+
+// ===== ARRAYS =====
+let items = [];
+let prices = [];
+let quantities = [];
+
+// ===== ADD ITEM =====
+function addItem() {
+    let name = document.getElementById("itemName").value;
+    let price = parseFloat(document.getElementById("price").value);
+    let qty = parseInt(document.getElementById("qty").value);
+
+    if (!name || price <= 0 || qty <= 0) {
+        alert("Enter valid details!");
+        return;
+    }
+
+    items.push(name);
+    prices.push(price);
+    quantities.push(qty);
+
+    displayItems();
+
+    // clear input
+    document.getElementById("itemName").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("qty").value = "";
+}
+
+// ===== DISPLAY ITEMS IN TABLE =====
+function displayItems() {
+    let table = document.getElementById("billTable");
+    table.innerHTML = "";
+
+    for (let i = 0; i < items.length; i++) {
+        let itemTotal = prices[i] * quantities[i];
+
+        table.innerHTML += `
+        <tr>
+            <td>${items[i]}</td>
+            <td>${prices[i]}</td>
+            <td>${quantities[i]}</td>
+            <td>${itemTotal}</td>
+            <td><button onclick="deleteItem(${i})">Delete</button></td>
+        </tr>
+        `
+    }
+}
+
+// ===== DELETE ITEM =====
+function deleteItem(index) {
+    items.splice(index, 1);
+    prices.splice(index, 1);
+    quantities.splice(index, 1);
+
+    displayItems();
+}
+
+// ===== GENERATE BILL =====
+function generateBill() {
+    let total = 0;
+
+    for (let i = 0; i < items.length; i++) {
+        total += prices[i] * quantities[i];
+    }
+
+    let discount = 0;
+    if (total > 5000) {
+        discount = total * 0.10;
+    }
+
+    let gst = total * 0.18;
+    let finalAmount = total - discount + gst;
+
+    document.getElementById("output").innerHTML = `
+        Subtotal:- ₹${total.toFixed(2)} <br>
+        Discount:- ₹${discount.toFixed(2)} <br>
+        GST (18%):- ₹${gst.toFixed(2)} <br>
+        <strong>Final Amount:- ₹${finalAmount.toFixed(2)}</strong>
+    `;
+}
+
+// ===== CLEAR ALL =====
+function clearAll() {
+    items = [];
+    prices = [];
+    quantities = [];
+
+    document.getElementById("billTable").innerHTML = "";
+    document.getElementById("output").innerHTML = "";
+}
+
+</script>
+
+</body>
+</html>
