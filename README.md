@@ -23,7 +23,12 @@ Diana_JS_Basics/
 ├── README.md
 ├── Prg1.html
 ├── Prg2.html
-└── Prg3.html
+├── Prg3.html
+├── Prg4.html
+├── Prg5.html
+├── Prg6.html
+├── Prg7.html
+
 
 ## Deployment
 The website is deployed using GitHub Pages.
