@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Skills</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right,#E060D1,#D92184,#D9215B,#D93B66,#CC1427);
+    text-align: center;
+    color: white;
+}
+
+.container {
+    width: 400px;
+    margin: 40px auto;	
+    padding: 20px;
+    background: #E84F80;
+    color: #4A2B3B;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px black;
+    font-weight:bold;
+}
+
+input {
+    padding: 10px;
+    width: 70%;
+    border-radius: 8px;
+}
+
+button {
+    padding: 10px;
+    background: #E38AA5;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #C20619;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    background-color: #EB73C4;
+    margin: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+li:hover {
+    background: #B00B23;
+}
+</style>
+</head>
+
+<body>
+
+<h1>My Skills</h1>
+
+<div class="container">
+
+    <input type="text" id="skillInput" placeholder="Enter a skill">
+    <button onclick="addSkill()">Add Skill</button>
+
+    <ul id="skillList"></ul>
+
+</div>
+
+<script>
+
+// ===== INITIAL SKILLS ARRAY =====
+let skills = ["HTML", "CSS", "JavaScript", "C++", "Python"];
+
+// ===== DISPLAY SKILLS =====
+function displaySkills() {
+    let list = document.getElementById("skillList");
+    list.innerHTML = "";
+
+    for (let i = 0; i < skills.length; i++) {
+        list.innerHTML += `
+            <li onclick="removeSkill(${i})">${skills[i]}</li>
+        `;
+    }
+}
+
+// ===== ADD SKILL =====
+function addSkill() {
+    let input = document.getElementById("skillInput");
+    let newSkill = input.value.trim();
+
+    if (newSkill === "") {
+        alert("Enter a skill!");
+        return;
+    }
+
+    skills.push(newSkill);
+    input.value = "";
+
+    displaySkills();
+}
+
+// ===== REMOVE SKILL =====
+function removeSkill(index) {
+    skills.splice(index, 1);
+    displaySkills();
+}
+
+// ===== LOAD INITIAL SKILLS =====
+displaySkills();
+
+</script>
+
+</body>
+</html>
