@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Game</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right,#68E8A2, #4AC280, #29CF74,#10944C);
+    text-align: center;
+    color: white;
+}
+
+.container {
+    width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #C0F0D4;
+    color: black;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px black;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #0DDE62;
+    color: white;
+}
+
+button:hover {
+    background: #1D7A42;
+}
+
+#timer {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Quiz Game</h1>
+
+<div class="container">
+
+    <div id="timer">Time: 15</div>
+    <h3 id="question">Question will appear here</h3>
+
+    <div id="options"></div>
+
+    <p>Score: <span id="score">0</span></p>
+
+    <button onclick="startGame()">Start Game</button>
+
+</div>
+
+<script>
+
+// ===== QUESTIONS ARRAY =====
+let quiz = [
+    {q: "109 + 35 = ?", options: [456, 144, 903, 565], answer: 144},
+    {q: "33 * 3 = ?", options: [100, 99, 88, 45], answer: 99},
+    {q: "10 - 4 = ?", options: [5, 6, 7, 8], answer: 6},
+    {q: "30/ 3 = ?", options: [10, 1, 30, 3], answer: 10},
+    {q: "30 + 6 = ?", options: [36, 34, 44, 37], answer: 36}
+];
+
+let score = 0;
+let time = 15;
+let timer;
+let currentQuestion;
+
+// ===== START GAME =====
+function startGame() {
+    score = 0;
+    document.getElementById("score").innerText = score;
+    nextQuestion();
+}
+
+// ===== LOAD RANDOM QUESTION =====
+function nextQuestion() {
+
+    // reset timer
+    time = 15;
+    document.getElementById("timer").innerText = "Time: " + time;
+
+    clearInterval(timer);
+
+    timer = setInterval(() => {
+        time--;
+        document.getElementById("timer").innerText = "Time: " + time;
+
+        if (time === 0) {
+            clearInterval(timer);
+            nextQuestion();
+        }
+    }, 1000);
+
+    // random question
+    let index = Math.floor(Math.random() * quiz.length);
+    currentQuestion = quiz[index];
+
+    document.getElementById("question").innerText = currentQuestion.q;
+
+    let optionsHTML = "";
+
+    for (let i = 0; i < currentQuestion.options.length; i++) {
+        optionsHTML += `
+            <button onclick="checkAnswer(${currentQuestion.options[i]})">
+                ${currentQuestion.options[i]}
+            </button>
+        `;
+    }
+
+    document.getElementById("options").innerHTML = optionsHTML;
+}
+
+// ===== CHECK ANSWER =====
+function checkAnswer(selected) {
+    if (selected === currentQuestion.answer) {
+        score++;
+        document.getElementById("score").innerText = score;
+    }
+
+    nextQuestion();
+}
+
+</script>
+
+</body>
+</html>
