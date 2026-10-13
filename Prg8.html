@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khushi Tak | Portfolio</title>
+    <style>
+        
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #95D4E6;
+            line-height: 1.6;
+          }
+
+        h2 {
+            color: #11788A;
+            border-bottom: 2px solid #0F6575;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        section {
+            padding: 60px 10%;
+            scroll-margin-top: 60px;
+        }
+
+        /* Header */
+        header {
+            background:linear-gradient(to bottom left,#4295B3,#C0E2ED,#97D5E8,#1DACE0);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background-color: #62AFCC;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #288DA1;
+        }
+
+        /* About Section Layout */
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .profile-img-container {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Skills & Lists */
+        .skills-list {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            list-style: none;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-grid figure {
+            margin: 0;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-grid figure:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        figcaption {
+            text-align: center;
+            padding-top: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            background-color: #2CAABF;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #83DCEB;
+        }
+
+        footer {
+            background:linear-gradient(to bottom left,#4295B3,#38A2B5,#1F8DA1,#11788A);;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="home">
+        <h1>My Portfolio</h1>
+        <p><strong>Khushi Tak</strong> | BCA Student</p>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>Hello, I’m a student who is interested in web development. I like learning new things and building simple, user-friendly websites. I prefer to work quietly and focus on improving my skills step by step..</p>
+                
+                <h3>Educational Goals</h3>
+                <p>I want to become a full-stack developer and work on real-world projects where I can grow and gain experience over time.</p>
+
+                <h3>Career Goals</h3>
+                <p>To become a skilled full‑stack developer and work on impactful real‑world projects.</p>
+            </div>
+            <div class="profile-img-container">
+                <img src="C:\Users\Administrator\Pictures\Screenshots\khu.png" alt="Khushi Tak Profile">
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" style="background-color: #ecf0f1;">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+            <li><strong>Programming Languages:</strong> C, Java, Python</li>
+            <li><strong>Web Technologies:</strong> HTML5, CSS3, JavaScript</li>
+            <li><strong>Databases:</strong> MySQL</li>
+            <li><strong>Tools:</strong> VS Code, Git/GitHub</li>
+        </ul>
+    </section>
+
+    <section id="experience" style="background-color: #ecf0f1;">
+        <h2>Internships / Experience</h2>
+        <div style="background: white; padding: 20px; border-radius: 8px;">
+            <h3>Web Development Intern</h3>
+            <p><strong>Duration:</strong> June 2025 – July 2025</p>
+            <p><strong>Roles:</strong> Frontend design, responsive layouts</p>
+            <p><strong>Skills Gained:</strong> HTML, CSS, Teamwork</p>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <ul>
+            <li>SpokenTutorial – Programming in Java</li>
+            <li>SpokenTutorial – HTML</li>
+            <li>Participated in Hackathon 2025</li>
+            <li>Attended SEO Workshop</li>
+        </ul>
+    
+    <div class="gallery-grid">
+           <figure>
+                <img src="file:///C:/Users/Administrator/Pictures/Screenshots/Screenshot%202026-01-03%20113552.png">
+                <figcaption>Hackathon Participation</figcaption>
+            </figure>
+            <figure>
+                <img src="file:///C:/Users/Administrator/Pictures/Screenshots/Screenshot%202026-01-03%20114003.png">
+                <figcaption>Workshop Participation</figcaption>
+            </figure>
+            <figure>
+                <img src="file:///C:/Users/Administrator/Pictures/Screenshots/Screenshot%202026-01-03%20115113.png">
+                <figcaption>Spoken Tutorial Participation</figcaption>
+            </figure>
+
+             </figure>
+            <figure>
+                <img src="file:///C:/Users/Administrator/Pictures/Screenshots/Screenshot%202026-01-03%20115132.png">
+                <figcaption>Spoken Tutorial Participation</figcaption>
+            </figure>
+             </figure>
+            <figure>
+                <img src="file:///C:/Users/Administrator/Pictures/Screenshots/Screenshot%202026-01-03%20115054.png">
+                <figcaption>Spoken Tutorial Participation</figcaption>
+            </figure>
+
+      </div>
+    </section>
+
+
+    <section id="gallery" style="background-color: #ecf0f1;">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <figure>
+                <img src="file:///C:/Users/Administrator/Pictures/Screenshots/image11.png" alt="Project Screenshot">
+                <figcaption>Project-1 UI Design</figcaption>
+            </figure>
+            <figure>
+                <img src="file:///C:/Users/Administrator/Pictures/Screenshots/image12.png" alt="Project Screenshot">
+                <figcaption>Project-2 UI Design</figcaption>
+            </figure>
+            <figure>
+                <img src="file:///C:/Users/Administrator/Pictures/Screenshots/image13.png" alt="Project Screenshot">
+                <figcaption>Project-3 UI Design</figcaption>
+            </figure>
+            <figure>
+                <img src="file:///C:/Users/Administrator/Pictures/Screenshots/Screenshot%202025-03-07%20213652.png" alt="Project Screenshot">
+                <figcaption>Project-4 UI Design</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-form">
+        <center> <p>Email: khushitak36747@gmail.com | Phone: +91-8302955837|
+        <u>GitHub:https://github.com/khushitak36747</u></p></center>
+            <form>
+                <label>Name</label>
+                <input type="text" placeholder="Your Name" required>
+
+                <label>Email</label>
+                <input type="email" placeholder="Your Email" required>
+
+                <label>Phone no.</label>
+                <input type="phone no." placeholder="Your phone no." required>
+
+                <label>Message</label>
+                <textarea rows="4" placeholder="How can I help you?"></textarea>
+
+                <div style="text-align: center;">
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Khushi Tak| Contact: khushitak36747@gmail.com</p>
+    </footer>
+
+</body>
+</html>
