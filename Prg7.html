@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Email Registration Form</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #AFDE59,#45D965,#18C499);
+    text-align: center;
+}
+
+/* FIXED CSS */
+.container {
+    width: 650px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #65D685;
+    color: black;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px black;
+}
+
+input, select {
+    width: 90%;
+    padding: 8px;
+    margin: 6px;
+    border-radius: 8px;
+}
+
+button {
+    padding: 10px 15px;
+    background: #048C3B;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #347F69;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.result {
+    margin-top: 20px;
+    text-align: left;
+    background-color: #B3FCA4;
+    padding: 10px;
+    border-radius: 10px;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Registration Form</h1>
+
+<div class="container">
+
+<form onsubmit="return validateForm()">
+
+<input type="text" id="fname" placeholder="First Name">
+<div class="error" id="fnameError"></div>
+
+<input type="text" id="lname" placeholder="Last Name">
+<div class="error" id="lnameError"></div>
+
+<input type="number" id="age" placeholder="Age">
+<div class="error" id="ageError"></div>
+
+<select id="city">
+    <option value="">City</option>
+    <option>Jaipur</option>
+    <option>Udaipur</option>
+    <option>Delhi</option>
+    <option>Mumbai</option>
+    <option>Bangalore</option>
+</select>
+<div class="error" id="cityError"></div>
+
+<input type="text" id="email" placeholder="Email">
+<div class="error" id="emailError"></div>
+
+<input type="text" id="phone" placeholder="Phone Number">
+<div class="error" id="phoneError"></div>
+
+<input type="password" id="password" placeholder="Password">
+<div class="error" id="passError"></div>
+
+<input type="date" id="dob">
+<div class="error" id="dobError"></div>
+
+<input type="text" id="birthplace" placeholder="Birth Place">
+<div class="error" id="birthError"></div>
+
+<select id="status">
+    <option value="">What do you do?</option>
+    <option>Student</option>
+    <option>Professional</option>
+    <option>Work from home</option>
+    <option>Employed</option>
+    <option>Unemployed</option>
+</select>
+<div class="error" id="statusError"></div>
+
+<select id="marital">
+    <option value="">Marital Status</option>
+    <option>Unmarried</option>
+    <option>Married</option>
+</select>
+<div class="error" id="maritalError"></div>
+
+<br><br>
+
+<button type="submit">Register</button>
+
+</form>
+
+<div class="result" id="output"></div>
+
+</div>
+
+<script>
+
+function validateForm() {
+
+    // CLEAR ERRORS
+    document.querySelectorAll(".error").forEach(e => e.innerText = "");
+
+    let valid = true;
+
+    let fname = document.getElementById("fname").value.trim();
+    let lname = document.getElementById("lname").value.trim();
+    let age = document.getElementById("age").value;
+    let city = document.getElementById("city").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let password = document.getElementById("password").value;
+    let dob = document.getElementById("dob").value;
+    let birthplace = document.getElementById("birthplace").value;
+    let status = document.getElementById("status").value;
+    let marital = document.getElementById("marital").value;
+
+    // REGEX
+    let nameRegex = /^[A-Za-z]+$/;
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let phoneRegex = /^[0-9]{10}$/;
+    let passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{6,}$/;
+
+    // VALIDATION
+
+    if (!nameRegex.test(fname)) {
+        document.getElementById("fnameError").innerText = "Only letters allowed";
+        valid = false;
+    }
+
+    if (!nameRegex.test(lname)) {
+        document.getElementById("lnameError").innerText = "Only letters allowed";
+        valid = false;
+    }
+
+    if (age < 10 || age > 100) {
+        document.getElementById("ageError").innerText = "Age must be 10–100";
+        valid = false;
+    }
+
+    if (city === "") {
+        document.getElementById("cityError").innerText = "Select a city";
+        valid = false;
+    }
+
+    if (!emailRegex.test(email)) {
+        document.getElementById("emailError").innerText = "Invalid email format";
+        valid = false;
+    }
+
+    if (!phoneRegex.test(phone)) {
+        document.getElementById("phoneError").innerText = "Phone must be 10 digits";
+        valid = false;
+    }
+
+    if (!passRegex.test(password)) {
+        document.getElementById("passError").innerText =
+            "Must include uppercase, lowercase, number & symbol";
+        valid = false;
+    }
+
+    if (dob === "") {
+        document.getElementById("dobError").innerText = "Select DOB";
+        valid = false;
+    }
+
+    if (birthplace === "") {
+        document.getElementById("birthError").innerText = "Enter birthplace";
+        valid = false;
+    }
+
+    if (status === "") {
+        document.getElementById("statusError").innerText = "Select status";
+        valid = false;
+    }
+
+    if (marital === "") {
+        document.getElementById("maritalError").innerText = "Select marital status";
+        valid = false;
+    }
+
+    if (!valid) return false;
+
+    // DISPLAY OUTPUT
+    document.getElementById("output").style.display = "block";
+    document.getElementById("output").innerHTML = `
+      <center><u><h3>Registration Details</h3></center></u>
+        First Name: ${fname} <br>
+        Last Name: ${lname} <br>
+        Age: ${age} <br>
+        City: ${city} <br>
+        Email: ${email} <br>
+        Phone: ${phone} <br>
+        DOB: ${dob} <br>
+        Birth Place: ${birthplace} <br>
+        Status: ${status} <br>
+        Marital Status: ${marital}
+    `;
+
+    return false;
+}
+
+</script>
+
+</body>
+</html>
