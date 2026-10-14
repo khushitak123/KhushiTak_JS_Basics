@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khushi Tak | Pink Blossom Portfolio</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --soft-pink: #FFD1DC;
+      --deep-pink: #FF85A2;
+      --dream-bg: linear-gradient(135deg, #fff5f7 0%, #ffffff 100%);
+    }
+
+    body { background: var(--dream-bg); font-family: 'Poppins', sans-serif; color: #705b61; }
+
+    /* Capital Titles & Spacing */
+    h1, h2, h3, .navbar-brand {
+      font-family: 'Pacifico', cursive;
+      color: var(--deep-pink);
+      text-transform: capitalize;
+      margin-bottom: 30px;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.9) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--soft-pink);
+      padding: 15px 0;
+    }
+
+   .nav-link { color: var(--deep-pink) !important; font-weight: 500; margin: 0 10px; }
+
+    header { 
+      background: linear-gradient(135deg, #FFB6C1, #FFD1DC); 
+      color: white; 
+      padding: 100px 0;
+      clip-path: ellipse(130% 100% at 50% 0%);
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .profile-img {
+      border: 8px solid white;
+      box-shadow: 0 10px 25px rgba(255, 133, 162, 0.2);
+      border-radius: 30px;
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .pink-card {
+      border: none;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 10px 30px rgba(255, 182, 193, 0.2);
+      padding: 30px;
+      transition: 0.3s;
+    }
+    .pink-card:hover { transform: translateY(-5px); }
+
+    section { padding: 60px 0; }
+
+    .btn-pink {
+      background: linear-gradient(45deg, #FF85A2, #FFB6C1);
+      color: white; border-radius: 30px; border: none; padding: 10px 25px;
+    }
+
+    /* Certificate & Gallery Styling */
+    .cert-box img { 
+      cursor: pointer; 
+      transition: 0.3s; 
+      border: 5px solid white; 
+      border-radius: 20px;
+    }
+    .cert-name { font-weight: 600; margin-top: 15px; color: #705b61; display: block; }
+
+    /* Custom Pink Pagination */
+    .pagination .page-link { color: var(--deep-pink); border-color: var(--soft-pink); border-radius: 10px; margin: 0 5px; }
+    .pagination .page-item.active .page-link { background-color: var(--deep-pink); border-color: var(--deep-pink); color: white; }
+
+    .magic-lightbox {
+      display: none; position: fixed; z-index: 10000; top: 0; left: 0; 
+      width: 100%; height: 100%; background: rgba(255, 245, 247, 0.98);
+      justify-content: center; align-items: center;
+    }
+    .magic-lightbox.active { display: flex; }
+
+    footer { background: var(--soft-pink); padding: 30px; margin-top: 50px; }
+
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand fs-2" href="#">Khushi Tak 🌸</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pinkNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="pinkNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="home">
+  <h1 class="display-3 fw-bold">My Portfolio</h1>
+  <p class="lead">Khushi Tak | BCA Student</p>
+</header>
+
+<div class="container">
+  <section id="about" class="row align-items-center">
+    <div class="col-md-5 text-center mb-4">
+      <img src="C:\Users\Administrator\Pictures\Camera Roll\diana.jpeg" class="profile-img" alt="Khushi Tak">
+    </div>
+    <div class="col-md-7">
+      <div class="pink-card">
+        <h2>About Me</h2>
+        <p>Namaste....I'm Khushi Tak, a BCA student. I love web development because it allows me to combine my technical coding skills with my creative design ideas.</p>
+        <div class="collapse" id="readMore">
+         <h3>Educational Goals</h3>
+                <p>I want to become a full-stack developer and work on real-world projects where I can grow and gain experience over time.</p>
+
+                <h3>Career Goals</h3>
+                <p>To become a skilled full‑stack developer and work on impactful real‑world projects.</p>
+
+        </div>
+        <button class="btn btn-pink btn-sm mt-3" data-bs-toggle="collapse" data-bs-target="#readMore">Read More</button>
+      </div>
+    </div>
+  </section>
+
+
+
+<section id="skills" class="container my-5">
+  <h2 class="text-center">Skills</h2>
+  <div class="table-responsive mt-4 px-2">
+    <table class="table table-hover text-center pink-card shadow-sm">
+      <thead style="background-color: var(--soft-pink);">
+        <tr>
+          <th>Category</th>
+          <th>Technology</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Web</td>
+          <td>HTML, CSS, Javascript, Bootstrap</td>
+        </tr>
+        <tr>
+          <td>Programming Languages</td>
+          <td>C,Java & Python</td>  
+        </tr>
+        <tr>
+          <td>Database</td>
+          <td>MySQL</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+
+<section id="gallery">
+    <h2 class="text-center">Gallery</h2>
+    <div class="row g-4 mt-2">
+      <div class="col-md-3 col-6"><img src="file:///C:/Users/Administrator/Pictures/Screenshots/image11.png" class="img-fluid rounded img-zoom shadow-sm" onclick="openMagic(this.src)"></div>
+      <div class="col-md-3 col-6"><img src="file:///C:/Users/Administrator/Pictures/Screenshots/image12.png" class="img-fluid rounded img-zoom shadow-sm" onclick="openMagic(this.src)"></div>
+      <div class="col-md-3 col-6"><img src="file:///C:/Users/Administrator/Pictures/Screenshots/image13.png" class="img-fluid rounded img-zoom shadow-sm" onclick="openMagic(this.src)"></div>
+      <div class="col-md-3 col-6"><img src="file:///C:/Users/Administrator/Pictures/Screenshots/Screenshot%202025-03-07%20213652.png" class="img-fluid rounded img-zoom shadow-sm" onclick="openMagic(this.src)"></div>
+    </div>
+  </section>
+
+
+ <section id="certifications">
+    <h2 class="text-center">Certifications</h2>
+    <div class="row g-4 mt-2 text-center">
+      <div class="col-md-3 col-6 cert-box">
+        <img src="file:///C:/Users/Administrator/Pictures/Screenshots/Screenshot%202026-01-03%20115132.png" class="img-fluid" onclick="openMagic(this.src)">
+        <span class="cert-name">Java Programming</span>
+      </div>
+      <div class="col-md-3 col-6 cert-box">
+        <img src="file:///C:/Users/Administrator/Pictures/Screenshots/Screenshot%202026-01-03%20115113.png" class="img-fluid" onclick="openMagic(this.src)">
+        <span class="cert-name">HTML Training</span>
+      </div>
+      <div class="col-md-3 col-6 cert-box">
+        <img src="file:///C:/Users/Administrator/Pictures/Screenshots/Screenshot%202026-01-03%20114003.png" class="img-fluid" onclick="openMagic(this.src)">
+        <span class="cert-name">SEO Workshop</span>
+      </div>
+      <div class="col-md-3 col-6 cert-box">
+        <img src="file:///C:/Users/Administrator/Pictures/Screenshots/Screenshot%202026-01-03%20113552.png" class="img-fluid" onclick="openMagic(this.src)">
+        <span class="cert-name">Hackathon 2025</span>
+      </div>
+    </div>
+  </section>
+
+
+<section id="projects">
+  <h2 class="text-center">Projects</h2>
+  <div class="row g-4 mt-2">
+
+   
+    <div class="col-md-6">
+      <div class="pink-card text-center h-100">
+        <h3>Portfolio Website</h3>
+        <a href="file:///C:/Users/Administrator/Desktop/Web%20application-2%20assignment/Port.html" target="_blank" class="btn btn-pink">View Project</a>
+      </div>
+    </div>
+
+   
+    <div class="col-md-6">
+      <div class="pink-card text-center h-100">
+        <h3>The Bill</h3>
+        <a href="file:///C:/Users/Administrator/Desktop/Web%20application-2%20assignment/Bill.html" target="_blank" class="btn btn-pink">View Project</a>
+      </div>
+    </div>
+
+<div class="col-md-6">
+      <div class="pink-card text-center h-100">
+        <h3>Marksheet</h3>
+        <a href="file:///C:/Users/Administrator/Desktop/Web%20application-2%20assignment/Marksheet1.html" target="_blank" class="btn btn-pink">View Project</a>
+      </div>
+    </div>
+
+<div class="col-md-6">
+      <div class="pink-card text-center h-100">
+        <h3>Marksheet using array</h3>
+        <a href="file:///C:/Users/Administrator/Desktop/Web%20application-2%20assignment/Marksheetarray.html" target="_blank" class="btn btn-pink">View Project</a>
+      </div>
+    </div>
+
+<div class="col-md-6">
+      <div class="pink-card text-center h-100">
+        <h3>The Bill Calculator</h3>
+        <a href="file:///C:/Users/Administrator/Desktop/Web%20application-2%20assignment/billportfolio2.html" target="_blank" class="btn btn-pink">View Project</a>
+      </div>
+    </div>
+
+<div class="col-md-6">
+      <div class="pink-card text-center h-100">
+        <h3>Quiz</h3>
+        <a href="file:///C:/Users/Administrator/Desktop/Web%20application-2%20assignment/quiz.html" target="_blank" class="btn btn-pink">View Project</a>
+      </div>
+    </div>
+
+<div class="col-md-6">
+      <div class="pink-card text-center h-100">
+        <h3>Registration Form</h3>
+        <a href="file:///C:/Users/Administrator/Desktop/Web%20application-2%20assignment/Reg1.html" target="_blank" class="btn btn-pink">View Project</a>
+      </div>
+    </div>
+
+
+<div class="col-md-6">
+      <div class="pink-card text-center h-100">
+        <h3>Skill</h3>
+        <a href="file:///C:/Users/Administrator/Desktop/Web%20application-2%20assignment/skils2.html" target="_blank" class="btn btn-pink">View Project</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="resume">
+  <h2 class="text-center">Resume</h2>
+  <div class="row g-4 mt-2">
+
+   
+    <div class="col-md-6">
+      <div class="pink-card text-center h-100">
+        <h3>Resume</h3>
+        <a href="C:\Users\Administrator\Pictures\Screenshots/Resume.png" target="_blank" class="btn btn-pink">Click on</a>
+      </div>
+    </div>
+
+  <section id="contact">
+    <div class="row justify-content-center">
+      <div class="col-md-6 pink-card p-5 shadow">
+        <h2 class="text-center">Contact Me</h2>
+        <div id="alertBox"></div>
+        <form id="contactForm" onsubmit="return validateMe(event)">
+          <div class="mb-4"><input type="text" id="name" class="form-control rounded-pill" placeholder="Name"></div>
+          <div class="mb-4"><input type="email" id="email" class="form-control rounded-pill" placeholder="Email"></div>
+          <div class="mb-4"><input type="text" id="mobile" class="form-control rounded-pill" placeholder="Mobile"></div>
+          <div class="mb-4"><textarea id="msg" class="form-control" style="border-radius:20px" rows="4" placeholder="Message"></textarea></div>
+          <button type="submit" class="btn btn-pink w-100">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <nav class="my-5">
+    <ul class="pagination justify-content-center">
+      <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+</div>
+
+
+<div class="magic-lightbox" id="magicLightbox" onclick="closeMagic()">
+  <img src="" id="fullImage" style="max-width: 85%; border: 10px solid white; border-radius: 20px;">
+</div>
+
+
+<footer class="text-center p-4">
+  <p class="mb-0 fw-bold">© 2026 Khushi Tak | Contact: khushitak36747@gmail.com</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function openMagic(src) {
+    document.getElementById("fullImage").src = src;
+    document.getElementById("magicLightbox").classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+  function closeMagic() {
+    document.getElementById("magicLightbox").classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+
+  function validateMe(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
+  const msg = document.getElementById("msg").value.trim();
+  const alertBox = document.getElementById("alertBox");
+
+  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,}$/i;
+  const mobilePattern = /^[0-9]{10}$/;
+
+  if (!name || !email || !mobile || !msg) {
+    alertBox.innerHTML = '<div class="alert alert-danger">All fields are required.</div>';
+    return false;
+  }
+
+  if (!emailPattern.test(email)) {
+    alertBox.innerHTML = '<div class="alert alert-danger">Please enter a valid email address.</div>';
+    return false;
+  }
+
+  if (!mobilePattern.test(mobile)) {
+    alertBox.innerHTML = '<div class="alert alert-danger">Please enter a valid 10-digit mobile number.</div>';
+    return false;
+  }
+
+  alertBox.innerHTML = '<div class="alert alert-success">Message sent successfully!</div>';
+  document.getElementById("contactForm").reset();
+  return false;
+}
+</script>
+
+</body>
+</html>
